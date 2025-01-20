@@ -39,18 +39,19 @@ router.beforeEach((to, from, next) => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-    console.log(`isLoggedIn: ${isLoggedIn}, isAdmin: ${isAdmin}`);
+    // 관리자 권한이 필요한 페이지 처리
     if (to.meta.requiresAdmin) {
         if (!isLoggedIn) {
             alert('Please log in first.');
-            return next('/login');
+            return next('/login'); // 로그인 안 된 경우 로그인 페이지로
         }
         if (!isAdmin) {
             alert('Access Denied: Admins only!');
-            return next('/');
+            return next('/'); // 관리자가 아닌 경우 홈으로 리다이렉트
         }
     }
-    next();
+
+    next(); // 조건 충족 시 정상적으로 이동
 });
 
 

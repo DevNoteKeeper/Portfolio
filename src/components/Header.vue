@@ -7,13 +7,12 @@
 
       <nav>
         <ul class="nav-list">
-          <li>            <router-link
-              to="/"
+          <li>
+            <a 
+              href="#home" 
               class="nav-item"
-              :class="{ active: $route.path === '/' }"
-            >
-              Home
-            </router-link></li>
+              @click.prevent="reloadPage">Home</a>
+          </li>
           <li><a href="#about" class="nav-item" exact-active-class="active">About</a></li>
           <li><a href="#stack" class="nav-item" exact-active-class="active">Stack</a></li>
           <li><a href="#project" class="nav-item" exact-active-class="active">Project</a></li>
