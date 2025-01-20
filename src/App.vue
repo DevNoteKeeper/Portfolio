@@ -2,24 +2,25 @@
   <div id = "app" class="page-container">
     <HeaderComponent></HeaderComponent>
     <div class="main-container">
-      <AboutSection id="about" />
-      <StackSection id="stack" />
-      <Project id="project" />
-      <Education id="education" />
-      <Career id="career" />
-      <Contact id="contact" />
+      <router-view v-if="$route.path == '/projects'"/>
+      <AboutSection v-if="$route.path !== '/projects'" id="about" />
+      <StackSection v-if="$route.path !== '/projects'" id="stack" />
+      <Project v-if="$route.path !== '/projects'" id="project" />
+      <Education v-if="$route.path !== '/projects'" id="education" />
+      <Career v-if="$route.path !== '/projects'" id="career" />
+      <Contact v-if="$route.path !== '/projects'" id="contact" />
   </div>
   </div>
 </template>
 
 <script>
 import HeaderComponent from '@/components/Header.vue';
-import AboutSection from "@/views/About.vue";
-import StackSection from "@/views/Stack.vue";
-import Project from "@/views/Project.vue";
-import Education from "@/views/Education.vue";
-import Career from "@/views/Career.vue";
-import Contact from "@/views/Contact.vue";
+import AboutSection from "@/section/About.vue";
+import StackSection from "@/section/Stack.vue";
+import Project from "@/section/Project.vue";
+import Education from "@/section/Education.vue";
+import Career from "@/section/Career.vue";
+import Contact from "@/section/Contact.vue";
 
 export default {
   name: 'App',

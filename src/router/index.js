@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Stack from '../views/Stack.vue';
-import Project from '../views/Project.vue';
-import Education from '../views/Education.vue';
-import Career from '../views/Career.vue';
-import Contact from '../views/Contact.vue';
-import Login from '../views/Login.vue';
+import Home from '../section/Home.vue';
+import About from '../section/About.vue';
+import Stack from '../section/Stack.vue';
+import Project from '../section/Project.vue';
+import Education from '../section/Education.vue';
+import Career from '../section/Career.vue';
+import Contact from '../section/Contact.vue';
+import Login from '../section/Login.vue';
+import Projects from '../pages/Projects.vue';
 
 const routes = [
     {path: '/', component: Home },
@@ -17,6 +18,7 @@ const routes = [
     {path: '/career', component: Career },
     {path: '/contact', component: Contact },
     {path: '/login', component: Login },
+    {path: '/projects', component: Projects},
 ]
 
 const router = createRouter({

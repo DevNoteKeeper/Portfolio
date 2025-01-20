@@ -9,12 +9,12 @@
         <nav>
           <ul class="nav-list">
             <li><router-link to="/" class="nav-item" exact-active-class="active">Home</router-link></li>
-            <li><a href="/about" class="nav-item" exact-active-class="active">About</a></li>
-            <li><a href="/stack" class="nav-item" exact-active-class="active">Stack</a></li>
-            <li><a href="/project" class="nav-item" exact-active-class="active">Project</a></li>
-            <li><a href="/education" class="nav-item" exact-active-class="active">Education</a></li>
-            <li><a href="/career" class="nav-item" exact-active-class="active">Career</a></li>
-            <li><a href="/contact" class="nav-item" exact-active-class="active">Contact</a></li>
+            <li><a href="#about" class="nav-item" exact-active-class="active">About</a></li>
+            <li><a href="#stack" class="nav-item" exact-active-class="active">Stack</a></li>
+            <li><a href="#project" class="nav-item" exact-active-class="active">Project</a></li>
+            <li><a href="#education" class="nav-item" exact-active-class="active">Education</a></li>
+            <li><a href="#career" class="nav-item" exact-active-class="active">Career</a></li>
+            <li><a href="#contact" class="nav-item" exact-active-class="active">Contact</a></li>
             <li><router-link to="/login" class="nav-item" exact-active-class="active">Login</router-link></li>
           </ul>
         </nav>
