@@ -4,6 +4,7 @@
     <div class="main-container">
       <router-view />
       <template v-if="!['/projects', '/project-upload'].includes($route.path)">
+        <HomeSection id="home" />
         <AboutSection id="about" />
         <StackSection id="stack" />
         <Project id="project" />
@@ -18,6 +19,7 @@
 
 <script>
 import HeaderComponent from '@/components/Header.vue';
+import HomeSection from "@/section/Home.vue";
 import AboutSection from "@/section/About.vue";
 import StackSection from "@/section/Stack.vue";
 import Project from "@/section/Project.vue";
@@ -29,6 +31,7 @@ export default {
   name: 'App',
   components: {
     HeaderComponent,
+    HomeSection,
     AboutSection,
     StackSection,
     Project,
