@@ -2,11 +2,13 @@
   <header class="header">
     <div class="container mx-auto flex justify-between items-center">
       <div class="text-2xl font-bold">
-        <router-link to="/" class="logo">SY</router-link>
+        <!-- Logo 클릭 시 홈으로 이동 -->
+        <router-link to="/" class="logo" @click.prevent="reloadPage">SY</router-link>
       </div>
 
       <nav>
         <ul class="nav-list">
+          <!-- Home 클릭 시 홈으로 이동 -->
           <li>
             <a 
               href="#home" 
@@ -26,7 +28,6 @@
               {{ isLoggedIn ? "Logout" : "Login" }}
             </button>
           </li>
-
         </ul>
       </nav>
     </div>
@@ -43,34 +44,38 @@
 
 <script>
 import LoginPopup from './LoginPopup.vue';
+
 export default {
   name: 'HeaderComponent',
   components: { LoginPopup },
   data() {
-  return {
-    isLoginPopupOpen: false, // 로그인 팝업 상태
-    isLoggedIn: localStorage.getItem('isLoggedIn') === 'true', // 로그인 상태 확인
-  };
-},
-methods: {
-  openLoginPopup() {
-    this.isLoginPopupOpen = true; // 로그인 팝업 열기
+    return {
+      isLoginPopupOpen: false, // 로그인 팝업 상태
+      isLoggedIn: localStorage.getItem('isLoggedIn') === 'true', // 로그인 상태 확인
+    };
   },
-  handleLoginSuccess() {
-    alert("Login Successful!");
-    this.isLoggedIn = true;
-    localStorage.setItem('isLoggedIn', 'true'); // 로그인 상태 저장
-    location.reload(); // 페이지 리로드
+  methods: {
+    openLoginPopup() {
+      this.isLoginPopupOpen = true; // 로그인 팝업 열기
+    },
+    handleLoginSuccess() {
+      alert("Login Successful!");
+      this.isLoggedIn = true;
+      localStorage.setItem('isLoggedIn', 'true'); // 로그인 상태 저장
+      this.reloadPage(); // 로그인 후 페이지 리로드
+    },
+    handleLogout() {
+      localStorage.removeItem('isLoggedIn'); // 로그인 상태 제거
+      localStorage.removeItem('isAdmin'); // 관리자 상태 제거
+      this.isLoggedIn = false;
+      alert("Logged out successfully!");
+      this.reloadPage(); // 로그아웃 후 페이지 리로드
+    },
+    // 페이지 리로드 메서드
+    reloadPage() {
+      window.location.href = '/'; // 홈 페이지로 이동
+    }
   },
-  handleLogout() {
-    localStorage.removeItem('isLoggedIn'); // 로그인 상태 제거
-    localStorage.removeItem('isAdmin'); // 관리자 상태 제거
-    this.isLoggedIn = false;
-    alert("Logged out successfully!");
-    location.reload();
-  },
-},
-
 };
 </script>
 
