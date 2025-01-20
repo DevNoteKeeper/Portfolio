@@ -1,17 +1,20 @@
 <template>
-  <div id = "app" class="page-container">
+  <div id="app" class="page-container">
     <HeaderComponent></HeaderComponent>
     <div class="main-container">
-      <router-view v-if="$route.path == '/projects'"/>
-      <AboutSection v-if="$route.path !== '/projects'" id="about" />
-      <StackSection v-if="$route.path !== '/projects'" id="stack" />
-      <Project v-if="$route.path !== '/projects'" id="project" />
-      <Education v-if="$route.path !== '/projects'" id="education" />
-      <Career v-if="$route.path !== '/projects'" id="career" />
-      <Contact v-if="$route.path !== '/projects'" id="contact" />
-  </div>
+      <router-view />
+      <template v-if="!['/projects', '/project-upload'].includes($route.path)">
+        <AboutSection id="about" />
+        <StackSection id="stack" />
+        <Project id="project" />
+        <Education id="education" />
+        <Career id="career" />
+        <Contact id="contact" />
+      </template>
+    </div>
   </div>
 </template>
+
 
 <script>
 import HeaderComponent from '@/components/Header.vue';

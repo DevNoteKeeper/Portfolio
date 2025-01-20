@@ -8,22 +8,50 @@ import Career from '../section/Career.vue';
 import Contact from '../section/Contact.vue';
 import Login from '../section/Login.vue';
 import Projects from '../pages/Projects.vue';
+import ProjectUpload from '../pages/ProjectUpload.vue';
+import LoginPopup from '../components/LoginPopup.vue';
 
 const routes = [
-    {path: '/', component: Home },
-    {path: '/about', component: About },
-    {path: '/stack', component: Stack },
-    {path: '/project', component: Project },
-    {path: '/education', component: Education },
-    {path: '/career', component: Career },
-    {path: '/contact', component: Contact },
-    {path: '/login', component: Login },
-    {path: '/projects', component: Projects},
-]
+    { path: '/', component: Home },
+    { path: '/about', component: About },
+    { path: '/stack', component: Stack },
+    { path: '/project', component: Project },
+    { path: '/education', component: Education },
+    { path: '/career', component: Career },
+    { path: '/contact', component: Contact },
+    { path: '/login', component: Login },
+    { path: '/projects', component: Projects },
+    {
+        path: '/project-upload',
+        component: ProjectUpload, // 업로드 페이지 경로
+        meta: { requiresAdmin: true }, // 관리자 권한이 필요한 경로
+    },
+    { path: '/login-popup', component: LoginPopup },
+];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 });
+
+// 네비게이션 가드 추가
+router.beforeEach((to, from, next) => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+    console.log(`isLoggedIn: ${isLoggedIn}, isAdmin: ${isAdmin}`);
+    if (to.meta.requiresAdmin) {
+        if (!isLoggedIn) {
+            alert('Please log in first.');
+            return next('/login');
+        }
+        if (!isAdmin) {
+            alert('Access Denied: Admins only!');
+            return next('/');
+        }
+    }
+    next();
+});
+
 
 export default router;

@@ -3,7 +3,11 @@
     <HeaderComponent></HeaderComponent>
     <div class="project-page">
       <div class="project-title">Project</div>
-      <div class="project-list">
+      <!-- 로그인 상태일 때만 버튼 표시 -->
+      <div v-if="isLoggedIn" class="upload-button-container">
+        <button @click="goToUpload">Go to Project Upload</button>
+      </div>
+            <div class="project-list">
         <div v-for="project in projects" :key="project.id" class="project-card" @click="openProjectPopup(project)">
           <img :src="project.main_image" alt="Project Image" class="project-card-image" />
           <div class="project-card-info">
@@ -57,6 +61,7 @@
         </div>
       </div>
     </div>
+    <router-view />
   </div>
 </template>
 
@@ -75,6 +80,7 @@ export default {
       projects: [],
       showPopup: false,
       selectedProject: null,
+      isLoggedIn: false,
     };
   },
   methods: {
@@ -95,6 +101,14 @@ export default {
       this.showPopup = false;
       this.selectedProject = null;
     },
+
+    // 업로드 페이지로 이동
+    goToUpload() {
+      this.$router.push('/project-upload');
+    },
+  },
+  created() {
+    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   },
   mounted() {
     this.fetchProjects();
