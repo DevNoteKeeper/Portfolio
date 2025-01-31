@@ -3,7 +3,7 @@
     <div class="container mx-auto flex justify-between items-center">
       <div class="text-2xl font-bold">
         <!-- Logo 클릭 시 홈으로 이동 -->
-        <router-link to="/Portfolio" class="logo" @click.prevent="reloadPage">SY</router-link>
+        <router-link to="/" class="logo" @click.prevent="reloadPage">SY</router-link>
       </div>
 
       <nav>
@@ -73,7 +73,7 @@ export default {
     },
     // 페이지 리로드 메서드
     reloadPage() {
-      window.location.href = '/'; // 홈 페이지로 이동
+      window.location.href = '/Portfolio/'; // 홈 페이지로 이동
     }
   },
 };

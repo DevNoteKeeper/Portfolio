@@ -12,7 +12,7 @@ import ProjectUpload from '../pages/ProjectUpload.vue';
 import LoginPopup from '../components/LoginPopup.vue';
 
 const routes = [
-    { path: '/Portfolio', component: Home },
+    { path: '/', component: Home },
     { path: '/about', component: About },
     { path: '/stack', component: Stack },
     { path: '/project', component: Project },
@@ -30,7 +30,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/Portfolio/'),
     routes,
 });
 
