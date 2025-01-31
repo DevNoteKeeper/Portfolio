@@ -12,7 +12,7 @@ import ProjectUpload from '../pages/ProjectUpload.vue';
 import LoginPopup from '../components/LoginPopup.vue';
 
 const routes = [
-    { path: '/', component: Home },
+    { path: '/Portfolio', component: Home },
     { path: '/about', component: About },
     { path: '/stack', component: Stack },
     { path: '/project', component: Project },

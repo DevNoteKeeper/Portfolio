@@ -43,21 +43,18 @@ export default {
 </script>
 
 <style scoped>
-.page-container{
-  padding-top: 80px;
-}
-
-html, body{
+#app, html, body{
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
-  box-sizing: border-box;
 }
 .main-container{
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   height: 100vh;
+  width: 100vw;
 }
 
 

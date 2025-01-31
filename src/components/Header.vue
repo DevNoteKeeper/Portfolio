@@ -3,7 +3,7 @@
     <div class="container mx-auto flex justify-between items-center">
       <div class="text-2xl font-bold">
         <!-- Logo 클릭 시 홈으로 이동 -->
-        <router-link to="/" class="logo" @click.prevent="reloadPage">SY</router-link>
+        <router-link to="/Portfolio" class="logo" @click.prevent="reloadPage">SY</router-link>
       </div>
 
       <nav>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     openLoginPopup() {
-      this.isLoginPopupOpen = true; // 로그인 팝업 열기
+      this.isLoginPopupOpen = !this.isLoginPopupOpen; // login popup open and close
     },
     handleLoginSuccess() {
       alert("Login Successful!");

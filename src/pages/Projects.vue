@@ -23,7 +23,7 @@
       </div>
 
       <!-- 팝업 Modal -->
-      <div v-if="showPopup" class="popup-overlay">
+      <div v-if="showPopup" class="popup-overlay" @click.self="closePopup">
         <div class="popup-content">
           <h2>{{ selectedProject.name }}</h2>
           <img :src="selectedProject.main_image" alt="Project Main Image" class="popup-image" />
@@ -38,7 +38,7 @@
 
           <div v-if="selectedProject.languages.length || selectedProject.tools.length">
             <h3>Languages & Tools</h3>
-            <div class="languages-tools-list">
+            <div class="languages-tools">
               <!-- languages -->
               <div v-for="(language, index) in selectedProject.languages" :key="index" class="language-item">
                 {{ language }}
@@ -149,7 +149,7 @@ export default {
 
 .project-card-image {
   width: 100%;
-  height: auto;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -191,7 +191,12 @@ export default {
   border-radius: 8px;
   width: 60%;
   max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.popup-content::-webkit-scrollbar{
+  display: none;
 }
 
 .popup-content h2 {
@@ -234,9 +239,9 @@ button:hover {
 }
 
 /* Styles for the Languages & Tools section */
-.languages-tools-list {
+.languages-tools {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .languages {

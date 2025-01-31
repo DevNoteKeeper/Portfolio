@@ -19,10 +19,13 @@
   background-color: #171a35;  /* 배경색 설정 */
   color: white;  /* 텍스트 색상 */
   min-height: 100vh;  /* 화면 전체 높이 */
+  min-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  left: 0;
 }
 
 .hero-content {
